@@ -32,8 +32,20 @@ class ChangePasswordEndpoint
                         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
                         $updateSql = "Update users SET password = '$hashedPassword' WHERE id = '$userId'";
+
+                        if (mysqli_query($this->conn, $updateSql)) {
+                            echo "Password updated Successfully";
+                        } else {
+                            echo "Error: " . $updateSql . "<br>" . mysqli_error($this->conn);
+                        }
+                    } else {
+                        echo "User not found";
                     }
+                } else {
+                    echo "User not logged in";
                 }
+            } else {
+                echo "Invalid request";
             }
         }
     }
