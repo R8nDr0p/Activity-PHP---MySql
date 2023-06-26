@@ -50,3 +50,6 @@ class ChangePasswordEndpoint
         }
     }
 }
+
+$changePasswordEndpoint = new ChangePasswordEndpoint($conn);
+$changePasswordEndpoint->changePassword();
