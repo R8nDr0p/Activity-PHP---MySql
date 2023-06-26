@@ -24,7 +24,7 @@ class ChangePasswordEndpoint
                 $sql = "SELECT password FROM users WHERE id = '$userId'";
                 $result = mysqli_query($this->conn, $sql);
 
-                if (my_sqli_num_rows($result) === 1) {
+                if (mysqli_num_rows($result) === 1) {
                     $row = mysqli_fetch_assoc($result);
                     $currentPassword = $row['password'];
 
